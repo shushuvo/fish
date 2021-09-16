@@ -1,1 +1,30 @@
-<h1>welcome to fish </h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+    </head>
+    <body>
+        <input placeholder="message" id="message">
+        <button id="sb" onclick="sendMessage()">send</button>
+        <div id="p"></div>
+        <script>
+            const socket = io('https://fish-welcome.herokuapp.com/')
+            
+            socket.on('message', (data)=>{
+            
+            const parent = document.getElementById('p');
+            const child = document.createElement('br');
+            parent.append(child, data); // Works fine              
+        
+        })
+
+            const sendMessage = () => {
+            console.log('button is pressed')
+            const m = document.getElementById("message").value
+            socket.emit('message', m);
+            alert('message sent')
+        }
+
+        </script>
+    </body>
+</html>
