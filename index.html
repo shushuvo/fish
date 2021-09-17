@@ -1,29 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+
     </head>
     <body>
-        <input placeholder="message" id="message">
-        <button id="sb" onclick="sendMessage()">send</button>
-        <div id="p"></div>
-        <script>
-            const socket = io('http://127.0.0.1:3001')
-            
-            socket.on('message', (data)=>{
-            
-            const parent = document.getElementById('p');
-            const child = document.createElement('br');
-            parent.append(child, data); // Works fine              
-        
-        })
-            const sendMessage = () => {
-            console.log('button is pressed')
-            const m = document.getElementById("message").value
-            socket.emit('message', m);
-            alert('message sent')
-        }
-
-        </script>
+        <h1>hello world</h1>
     </body>
 </html>
