@@ -8,7 +8,7 @@
         <button id="sb" onclick="sendMessage()">send</button>
         <div id="p"></div>
         <script>
-            const socket = io('https://fish-welcome.herokuapp.com/')
+            const socket = io('https://fish-welcome.herokuapp.com:3001')
             
             socket.on('message', (data)=>{
             
