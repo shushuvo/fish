@@ -21,7 +21,7 @@ io.on('connection', (socket)=>{
   })
 
 })
-
+app.listen(process.env.PORT || 5000)
 
  
 
