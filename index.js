@@ -8,6 +8,10 @@ app.get('/', function (req, res) {
   res.sendFile('index.html',{root:__dirname})
 })
 
+server.listen(3001, ()=> {
+  console.log("server running...")
+})
+
 io.on('connection', (socket)=>{
   console.log("User connected:" + socket.id)
 
