@@ -8,15 +8,6 @@
         <button id="sb" onclick="sendMessage()">send</button>
         <div id="p"></div>
         <script>
-            const socket = io('https://fish-welcome.herokuapp.com/')
-            
-            socket.on('message', (data)=>{
-            
-            const parent = document.getElementById('p');
-            const child = document.createElement('br');
-            parent.append(child, data); // Works fine              
-        
-        })
 
             const sendMessage = () => {
             console.log('button is pressed')
