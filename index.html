@@ -91,7 +91,7 @@ textarea:focus {
   background-color: #fcfcf8;
   outline: 1px solid transparent;
 }
- .product{
+ .time{
   background-color: #fb7547;
   height: 100px;
   width: 500px;
@@ -99,6 +99,87 @@ textarea:focus {
   font-family: Arial, Helvetica, sans-serif;
   color: #2b934b;
 }
+  .product{
+  background-color: #fb7547;
+  height: 400px;
+  width: 500px;
+  margin-left: 5%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2b934b;
+  overflow: scroll;
+}
+
+.page-preview-header{
+         	height:100px;
+	        width:80px;
+	        background-color:white;
+                padding-top:30px;
+                padding-right:30px;
+                padding-bottom:30px;
+                padding-left:30px;
+                color:purple;
+                border-width:2px 2px 2px 2px;
+                border-color:black;
+                border-style:transparent;
+                border-radius:70%
+                outline-color:blue;
+                margin-top:1px;
+                margin-bottom:1px;
+                margin-right:1px;
+                margin-left:1px;
+                  display: table-cell;
+        }
+        .page-preview-header:hover{
+		height:200px;
+	        width:200px;
+	        background-color:white;
+                padding-top:30px;
+                padding-right:30px;
+                padding-bottom:30px;
+                padding-left:30px;
+                color:purple;
+                border-width:2px 2px 2px 2px;
+                border-color:black;
+                border-style:solid;
+                border-radius:70%
+                outline-color:blue;
+                margin-top:10px;
+                margin-bottom:10px;
+                margin-right:10px;
+                margin-left:10px;
+             display: table-cell;    
+        }
+        .product-info{
+		font-size: 25px;
+		text-align:center;
+	}
+	.product-info2{
+		font-size: 15px;
+		text-align:left;
+	}
+  .cart{
+    color: cornflowerblue;
+  }
+  .cart:hover{
+    color: darkgreen;
+  }
+  .price{
+    height: 60px;
+    width: 150px;
+    background-color: rgb(0, 139, 74);
+    margin-top: 20px;
+    position: absolute;
+    color:white;
+  }
+  .delivery{
+    height: 60px;
+    width: 150px;
+    background-color: rgb(0, 139, 74);
+    margin-left: 70%;
+    margin-top: 21px;
+    position: absolute;
+    color: white;
+  }
    
 </style>
     
@@ -106,6 +187,35 @@ textarea:focus {
         <img src="https://sarahdoyle94.files.wordpress.com/2014/12/logo.png" class="img">
         
             <div class="wrapper centered">
+                
+                
+                              <div class="product">     
+                    <div class="page-preview">
+                        
+                  <div class="page-preview-header">
+                   <img alt="Responsive Desktop Mode" src="https://images.othoba.com/images/thumbs/0308796_mexican-mini-burger.jpeg" class="page-preview-header">
+                   <h1 class ="product-info">mini burger: 40tk</h1>
+                   <p class="product-info2">this product is good</p>
+                   <h3 class="cart" id="cart">+add to cart</h3>
+                 </div>
+                        <div class="page-preview-header">
+                   <img alt="Responsive Desktop Mode" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjQ3v9nj8vVpvLttnOrOAcEbbi-0AzdRnTY58A7ttRFTdO3LVWyWZtMAwRuEkMaR0F_9Q&usqp=CAU" class="page-preview-header">
+                   <h1 class ="product-info">regular  burger: 60tk</h1>
+                   <p class="product-info2">this product is good</p>
+                   <h3 class="cart" id="cart">+add to cart</h3>
+                 </div>
+                        <div class="page-preview-header">
+                   <img alt="Responsive Desktop Mode" src="https://marlandphotos.files.wordpress.com/2018/01/img_3423-2.jpg?w=640" class="page-preview-header">
+                   <h1 class ="product-info">fuchka: 30tk</h1>
+                   <p class="product-info2">this product is good</p>
+                   <h3 class="cart" id="cart">+add to cart</h3>
+                 </div>
+
+                   </div>
+              </div>
+                
+                
+                
                   <form onsubmit="done()">
                 <article class="letter">
                   <div class="side">
@@ -124,11 +234,15 @@ textarea:focus {
                     <p>
                       <button onclick="register()">Order</button>
                     </p>
+                      
+                      <div class="price" id="price"><p>total price</p> </div>
+                      <div class="delivery" id="delivery"><p>delivery charge</p></div> 
+                      
                   </div>
                 </article>
                  </form>
                 
-              <div id="product" class="product">
+              <div id="time" class="time">
                     <p>work houre: 6pm - 8pm</p>
                     <p>work day: monday - friday</p>
                     <p>work area: bankcolony, brammondi, ajijboarding</p>
