@@ -98,36 +98,36 @@ textarea:focus {
     <body>
         <img src="https://sarahdoyle94.files.wordpress.com/2014/12/logo.png" class="img">
         
-        <form>
             <div class="wrapper centered">
+                  <form>
                 <article class="letter">
                   <div class="side">
                     <h1>Order Now</h1>
                     <p>
-                      <textarea placeholder="Your Address" id="email"></textarea>
+                      <textarea placeholder="Your Address" id="email" required></textarea>
                     </p>
                   </div>
                   <div class="side">
                     <p>
-                      <input type="text" placeholder="Your name" id="uname" >
+                      <input type="text" placeholder="Your name" id="uname" required>
                     </p>
                     <p>
-                      <input type="number" placeholder="Your Phone" id="phone" >
+                      <input type="number" placeholder="Your Phone" id="phone" required>
                     </p>
                     <p>
                       <button onclick="register()">Order</button>
                     </p>
                   </div>
                 </article>
-
-
+                 </form>
+                
                 <input placeholder="message" id="message" class="message">
                 <button id="sb" onclick="sendMessage()">send</button>
                 <div id="p" class="p"></div>
                 <div id="p2"></div>
               </div>
 
-        </form>
+       
         <script>
             const socket = io('https://fish-welcome.herokuapp.com')
             
