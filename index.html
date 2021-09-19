@@ -93,45 +93,6 @@ textarea:focus {
 
 
 }
-.envelope {
-  
-  left: 0;
-  right: 0;
-  top: 0;
-  margin: auto;
-}
-.envelope.front {
-  width: 10rem;
-  height: .5px;
-  border-radius: 0 0 1rem 1rem;
- 
-  z-index: 9999;
-  opacity: 0;
-}
-.envelope.front::before, .envelope.front::after {
-  
-  display: block;
-  width: 12rem;
-  height: .5px;
-  background-color: #e9dc9d;
-  transform: rotate(30deg);
-  transform-origin: 0 0;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-  content: '';
-}
-.envelope.front::after{
-  right: 0;
-  transform: rotate(-30deg);
-  transform-origin: 100% 0;
-}
-.envelope.back {
-  top: -4rem;
-  width: 10rem;
-  height: 10rem;
- 
-  z-index: -9998;
-  opacity: 0;
-  transform: translateY(-6rem);}
 </style>
     
     <body>
@@ -158,8 +119,7 @@ textarea:focus {
                     </p>
                   </div>
                 </article>
-                <div class="envelope front"></div>
-                <div class="envelope back"></div>
+
 
                 <input placeholder="message" id="message" class="message">
                 <button id="sb" onclick="sendMessage()">send</button>
