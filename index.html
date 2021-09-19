@@ -46,9 +46,8 @@
                   const x = document.getElementById('email').value;
                 const y = document.getElementById('uname').value;
                 const z = document.getElementById('phone').value;
-            if(x && y && z){
+          
                 socket.emit('register', {email:email.value, name:uname.value, phone:phone.value})
-            }
             }   
         </script>
     </body>
