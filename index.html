@@ -4,37 +4,170 @@
         <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
     </head>
     
-    <style>
+<style>
     .img{width: 500px;
     height: 200px;
     display: flex;
   justify-content: center; /* horizontal */
   align-items: center; /* vertical */}
-    </style>
+
+  .message{
+      background-color: white;
+      height: 70px;
+
+  }
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #c8e7d8;
+  color: #4e5e72;
+  text-align: center;
+  font-family: monospace;
+}
+h1, p {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 2rem;
+  font-family: 'Dancing Script';
+}
+small {
+  display: block;
+  padding: 1rem 0;
+  font-size: 0.8rem;
+  transition: opacity 0.33s;
+}
+textarea, input, button {
+  line-height: 1.5rem;
+  border: 0;
+  outline: none;
+  font-family: inherit;
+  appearance: none;
+}
+textarea, input {
+  color: #4e5e72;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgb(229, 225, 187)' x='0' y='23' width='10' height='1'/></svg>");
+}
+textarea {
+ width: 100%;
+ height: 8rem;
+ resize: none;
+}
+
+button {
+ padding: 0.5rem 1rem;
+ border-radius: 0.25rem;
+ background-color: rgba(78, 94, 114, 0.9);
+ color: white;
+ font-size: 1rem;
+ transition: background-color 0.2s;
+
+}
+input[type=text]:focus,
+input[type=email]:focus,
+textarea:focus {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgba(78, 94, 114, 0.3)' x='0' y='23' width='10' height='1'/></svg>");
+  outline: none;
+}
+.wrapper {
+  width: 35rem;
+  background-color: white;
+}
+.letter {
+ 
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 30rem;
+  margin: auto;
+  perspective: 60rem;
+}
+.side {
+  height: 12rem;
+  background-color: #fcfcf8;
+  outline: 1px solid transparent;
+
+
+}
+.envelope {
+  
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+}
+.envelope.front {
+  width: 10rem;
+  height: .5px;
+  border-radius: 0 0 1rem 1rem;
+ 
+  z-index: 9999;
+  opacity: 0;
+}
+.envelope.front::before, .envelope.front::after {
+  
+  display: block;
+  width: 12rem;
+  height: .5px;
+  background-color: #e9dc9d;
+  transform: rotate(30deg);
+  transform-origin: 0 0;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  content: '';
+}
+.envelope.front::after{
+  right: 0;
+  transform: rotate(-30deg);
+  transform-origin: 100% 0;
+}
+.envelope.back {
+  top: -4rem;
+  width: 10rem;
+  height: 10rem;
+ 
+  z-index: -9998;
+  opacity: 0;
+  transform: translateY(-6rem);}
+</style>
     
     <body>
         <img src="https://sarahdoyle94.files.wordpress.com/2014/12/logo.png" class="img">
         
-        <h1>we don't save your info</h1>
-        <h2>write whatever you want</h2>
-        <h3>there will be someone to listen to you<h3>
-        <input placeholder="message" id="message" style = "height:200px">
-        <button id="sb" onclick="sendMessage()">send</button>
-        <div id="p"></div>
-                    
-            <h1>(optional)</h1>
-            <form>
-            <label>Address</label>
-            <input id="email" type="text" required>
-           
-            <label>Name</label>
-            <input id="uname" type="text" required> 
-           
-            <label>Phone</label>
-            <input id="phone" type="number" required>
-            
-            <button onclick="register()">register</button>
-             </form>
+        <form>
+            <div class="wrapper centered">
+                <article class="letter">
+                  <div class="side">
+                    <h1>Order Now</h1>
+                    <p>
+                      <textarea placeholder="Your Address" id="email"></textarea>
+                    </p>
+                  </div>
+                  <div class="side">
+                    <p>
+                      <input type="text" placeholder="Your name" id="uname" >
+                    </p>
+                    <p>
+                      <input type="number" placeholder="Your Phone" id="phone" >
+                    </p>
+                    <p>
+                      <button onclick="register()">Order</button>
+                    </p>
+                  </div>
+                </article>
+                <div class="envelope front"></div>
+                <div class="envelope back"></div>
+
+                <input placeholder="message" id="message" class="message">
+                <button id="sb" onclick="sendMessage()">send</button>
+                <div id="p" class="p"></div>
+                <div id="p2"></div>
+              </div>
+
+        </form>
         <script>
             const socket = io('https://fish-welcome.herokuapp.com')
             
@@ -45,11 +178,10 @@
             parent.append(child, data); // Works fine              
         
         })
-
             const sendMessage = () => {
             console.log('button is pressed')
             const m = document.getElementById("message").value
-            socket.emit('message', m);
+            socket.emit('message', {message: message.value});
             alert('message sent')
         }
             
