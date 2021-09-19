@@ -31,8 +31,9 @@ io.on('connection', (socket)=>{
     let name = data.name;
     let phone = data.phone;
   
+     if(email && name && phone){
     info.insert({address:email, name: name, phone:phone });
-
+     }
   })
 
 })
