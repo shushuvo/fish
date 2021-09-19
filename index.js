@@ -23,17 +23,23 @@ io.on('connection', (socket)=>{
 
   socket.on('message', (data)=>{
     console.log(data);
-    socket.broadcast.emit('message', data);
+    socket.broadcast.emit('message', data.message);
+    
+    let message = data.message;
+    if(message){
+    mess.insert({message: message});
+    }
   })
  
-   socket.on('register', (data)=>{
+  socket.on('register', (data)=>{
     let email = data.email;
     let name = data.name;
     let phone = data.phone;
-  
-     if(email && name && phone){
+    
+    if(email && name && phone){
     info.insert({address:email, name: name, phone:phone });
-     }
+    }
+
   })
 
 })
