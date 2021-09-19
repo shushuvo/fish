@@ -10,6 +10,20 @@
         <input placeholder="message" id="message" style = "height:200px">
         <button id="sb" onclick="sendMessage()">send</button>
         <div id="p"></div>
+                    
+            <h1>(optional)</h1>
+            <form>
+            <label>Address</label>
+            <input id="email" type="text" required>
+           
+            <label>Name</label>
+            <input id="uname" type="text" required> 
+           
+            <label>Phone</label>
+            <input id="phone" type="number" required>
+            
+            <button onclick="register()">register</button>
+             </form>
         <script>
             const socket = io('https://fish-welcome.herokuapp.com')
             
@@ -27,7 +41,10 @@
             socket.emit('message', m);
             alert('message sent')
         }
-
+            
+          const register = ()=>{
+            socket.emit('register', {email:email.value, name:uname.value, phone:phone.value})
+            }   
         </script>
     </body>
 </html>
