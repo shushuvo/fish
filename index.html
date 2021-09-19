@@ -99,7 +99,7 @@ textarea:focus {
         <img src="https://sarahdoyle94.files.wordpress.com/2014/12/logo.png" class="img">
         
             <div class="wrapper centered">
-                  <form>
+                  <form onsubmit="done()">
                 <article class="letter">
                   <div class="side">
                     <h1>Order Now</h1>
@@ -149,6 +149,7 @@ textarea:focus {
           
                 socket.emit('register', {email:email.value, name:uname.value, phone:phone.value})
             }   
+         const done = ()=>{alert('order is made. soon we will contact with you. thanks for your help')}
         </script>
     </body>
 </html>
