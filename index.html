@@ -180,6 +180,15 @@ textarea:focus {
     position: absolute;
     color: white;
   }
+    .amount{
+    background-color: chartreuse;
+    border-radius: 50px;
+    
+  }
+  .amount:hover{
+    background-color: red;
+    border-radius: 0px;
+  }
    
 </style>
     
@@ -196,19 +205,23 @@ textarea:focus {
                    <img alt="Responsive Desktop Mode" src="https://images.othoba.com/images/thumbs/0308796_mexican-mini-burger.jpeg" class="page-preview-header">
                    <h1 class ="product-info">mini burger: 40tk</h1>
                    <p class="product-info2">this product is good</p>
-                   <h3 class="cart" id="cart">+add to cart</h3>
+                   <h3 class="cart" id="cart" onclick="cart(40), amount1()">+add to cart</h3>
+                   <p class="amount" id="amount1" onclick="remove(40), rc1()"></p>
                  </div>
                         <div class="page-preview-header">
                    <img alt="Responsive Desktop Mode" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjQ3v9nj8vVpvLttnOrOAcEbbi-0AzdRnTY58A7ttRFTdO3LVWyWZtMAwRuEkMaR0F_9Q&usqp=CAU" class="page-preview-header">
                    <h1 class ="product-info">regular  burger: 60tk</h1>
                    <p class="product-info2">this product is good</p>
-                   <h3 class="cart" id="cart">+add to cart</h3>
+                   <h3 class="cart" id="cart" onclick="cart(60), amount2()">+add to cart</h3>
+                   <p class="amount" id="amount2" onclick="remove(60), rc2()"></p>
                  </div>
+
                         <div class="page-preview-header">
                    <img alt="Responsive Desktop Mode" src="https://marlandphotos.files.wordpress.com/2018/01/img_3423-2.jpg?w=640" class="page-preview-header">
                    <h1 class ="product-info">fuchka: 30tk</h1>
                    <p class="product-info2">this product is good</p>
-                   <h3 class="cart" id="cart">+add to cart</h3>
+                   <h3 class="cart" id="cart" onclick="cart(30), amount3()">+add to cart</h3>
+                   <p class="amount" id="amount3" onclick="remove(30), rc3()"></p>
                  </div>
 
                    </div>
@@ -235,8 +248,13 @@ textarea:focus {
                       <button onclick="register()">Order</button>
                     </p>
                       
-                      <div class="price" id="price"><p>total price</p> </div>
-                      <div class="delivery" id="delivery"><p>delivery charge</p></div> 
+                    <div class="price"><p>product price</p>
+                      <h3 id="price"></h3>
+                    </div>
+                    
+                      <div class="delivery"><p>delivery charge</p>
+                        <h3 id="delivery"></h3>
+                      </div>
                       
                   </div>
                 </article>
@@ -278,6 +296,77 @@ textarea:focus {
                 socket.emit('register', {email:email.value, name:uname.value, phone:phone.value})
             }   
          const done = ()=>{alert('order is made. soon we will contact with you. thanks for your help')}
+	 
+	           let tp = 0;
+          const cart = (c)=>{
+              tp=tp+c
+              document.getElementById('price').innerHTML= tp;
+
+              if(tp<=150){
+              document.getElementById('delivery').innerHTML= 10;}
+              if(150<tp){
+              document.getElementById('delivery').innerHTML= 20;}
+              if(300<tp){
+              document.getElementById('delivery').innerHTML= tp*10/100;}
+
+
+          }
+          const remove = (r)=>{
+            tp = tp-r 
+            document.getElementById('price').innerHTML= tp;
+            
+            if(tp<=150){
+              document.getElementById('delivery').innerHTML= 10;}
+              if(150<tp){
+              document.getElementById('delivery').innerHTML= 20;}
+              if(300<tp){
+              document.getElementById('delivery').innerHTML= tp*10/100;}
+              if(10>=tp){
+              document.getElementById('delivery').innerHTML= 0;}
+
+          }
+          
+
+
+          let a = 0;
+          const amount1 = ()=>{
+            a = a+1
+              document.getElementById('amount1').innerHTML= a;
+              if(a>0){document.getElementById("amount1").style.display = 'block'}
+          }
+          const rc1 = ()=>{
+            a = a-1
+              document.getElementById('amount1').innerHTML= a;
+              if(a<=0){document.getElementById("amount1").style.display = "none";}
+          }
+
+
+
+          let b = 0;
+          const amount2 = ()=>{
+            b = b+1
+              document.getElementById('amount2').innerHTML= b;
+              if(b>0){document.getElementById("amount2").style.display = 'block'}
+          }
+          const rc2 = ()=>{
+            b = b-1
+              document.getElementById('amount2').innerHTML= b;
+              if(b<=0){document.getElementById("amount2").style.display = "none";}
+          }
+
+
+          let c = 0;   
+          const amount3 = ()=>{
+            c = c+1
+              document.getElementById('amount3').innerHTML= c;
+              if(c>0){document.getElementById("amount3").style.display = 'block'}
+          }
+          const rc3 = ()=>{
+            c = c-1
+              document.getElementById('amount3').innerHTML= c;
+              if(c<=0){document.getElementById("amount3").style.display = "none";}
+          }
+	 
         </script>
     </body>
 </html>
