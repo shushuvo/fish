@@ -43,7 +43,8 @@ io.on('connection', (socket)=>{
     let c = data.c;
     
     if(email && name && phone && dl>0){
-    info.insert({address:email, 
+    info.insert({date: today,
+     address:email, 
                     name: name, 
                     phone:phone, 
                     product:tp, 
