@@ -293,7 +293,12 @@ textarea:focus {
             
             const register = ()=>{
               var today = new Date();
-                socket.emit('register', {email:email.value, name:uname.value, phone:phone.value, tp:tp, dl:dl, a:a, b:b, c:c, today:today})
+		    
+	             var time = new Date();
+              var h = time.getHours(); 
+              var m = time.getMinutes(); 
+		    
+                socket.emit('register', {email:email.value, name:uname.value, phone:phone.value, tp:tp, dl:dl, a:a, b:b, c:c, today:today, h:h, m:m})
             }   
           const done = ()=>{if(dl<10){alert('please select a product...')}
             if(dl>0)alert('order is made.' +' product price: '+tp+' Taka'+' delivery charge: '+dl+' Taka.'+' soon we will contact with you. thanks for your help')}
