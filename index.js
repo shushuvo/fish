@@ -35,9 +35,20 @@ io.on('connection', (socket)=>{
     let email = data.email;
     let name = data.name;
     let phone = data.phone;
+
+    let tp = data.tp;
+    let dl = data.dl;
+    let a = data.a;
+    let b = data.b;
+    let c = data.c;
     
-    if(email && name && phone){
-    info.insert({address:email, name: name, phone:phone });
+    if(email && name && phone && dl>0){
+    info.insert({address:email, 
+                    name: name, 
+                    phone:phone, 
+                    product:tp, 
+                    delivery:dl, 
+                    mini_burger: a, regular_burger: b, fuchka: c });
     }
 
   })
