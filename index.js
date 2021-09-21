@@ -43,9 +43,11 @@ io.on('connection', (socket)=>{
     let c = data.c;
    
     let today = data.today;
+    let h = data.h;
+    let m = data.m;
     
     if(email && name && phone && dl>0){
-    info.insert({date: today,
+    info.insert({date: today, houre:h, minute:m,
      address:email, 
                     name: name, 
                     phone:phone, 
