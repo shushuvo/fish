@@ -293,21 +293,25 @@ textarea:focus {
             
           const register = ()=>{
           
-                socket.emit('register', {email:email.value, name:uname.value, phone:phone.value})
+		socket.emit('register', {email:email.value, name:uname.value, phone:phone.value, tp:tp, dl:dl, a:a, b:b, c:c})
             }   
-         const done = ()=>{alert('order is made. soon we will contact with you. thanks for your help')}
+          const done = ()=>{if(dl<10){alert('please select a product...')}
+            if(dl>0)alert('order is made. soon we will contact with you. thanks for your help')}
 	 
 	           let tp = 0;
+		   let dl = 0;
           const cart = (c)=>{
               tp=tp+c
               document.getElementById('price').innerHTML= tp;
 
-              if(tp<=150){
-              document.getElementById('delivery').innerHTML= 10;}
-              if(150<tp){
-              document.getElementById('delivery').innerHTML= 20;}
-              if(300<tp){
-              document.getElementById('delivery').innerHTML= tp*10/100;}
+              if(tp<=150){ dl = 10;
+              document.getElementById('delivery').innerHTML= dl;}
+              if(150<tp){ dl = 20;
+              document.getElementById('delivery').innerHTML= dl;}
+              if(300<tp){ dl = tp*10/100;
+              document.getElementById('delivery').innerHTML= dl;}
+              if(20>tp){ dl = 0;
+              document.getElementById('delivery').innerHTML= dl;}
 
 
           }
@@ -315,15 +319,14 @@ textarea:focus {
             tp = tp-r 
             document.getElementById('price').innerHTML= tp;
             
-            if(tp<=150){
-              document.getElementById('delivery').innerHTML= 10;}
-              if(150<tp){
-              document.getElementById('delivery').innerHTML= 20;}
-              if(300<tp){
-              document.getElementById('delivery').innerHTML= tp*10/100;}
-              if(10>=tp){
-              document.getElementById('delivery').innerHTML= 0;}
-
+              if(tp<=150){ dl = 10;
+              document.getElementById('delivery').innerHTML= dl;}
+              if(150<tp){ dl = 20;
+              document.getElementById('delivery').innerHTML= dl;}
+              if(300<tp){ dl = tp*10/100;
+              document.getElementById('delivery').innerHTML= dl;}
+              if(20>tp){ dl = 0;
+              document.getElementById('delivery').innerHTML= dl;}
           }
           
 
