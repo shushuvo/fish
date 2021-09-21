@@ -291,12 +291,12 @@ textarea:focus {
             alert('message sent')
         }
             
-          const register = ()=>{
-          
-		socket.emit('register', {email:email.value, name:uname.value, phone:phone.value, tp:tp, dl:dl, a:a, b:b, c:c})
+            const register = ()=>{
+              var today = new Date();
+                socket.emit('register', {email:email.value, name:uname.value, phone:phone.value, tp:tp, dl:dl, a:a, b:b, c:c, today:today})
             }   
           const done = ()=>{if(dl<10){alert('please select a product...')}
-            if(dl>0)alert('order is made. soon we will contact with you. thanks for your help')}
+            if(dl>0)alert('order is made.' +' product price: '+tp+' Taka'+' delivery charge: '+dl+' Taka.'+' soon we will contact with you. thanks for your help')}
 	 
 	           let tp = 0;
 		   let dl = 0;
