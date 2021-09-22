@@ -283,6 +283,7 @@ textarea:focus {
 		
 	    <div id="review" class="review">
               <h2>other visitor's answer</h2>
+		<hr>
             </div>
        
         <script>
@@ -301,9 +302,10 @@ textarea:focus {
                               // Build out message div
                               var message = document.createElement('div');
                               var br = document.createElement('br');
+			      var hr = document.createElement('hr');	
                               message.setAttribute('class', 'chat-message');
                               message.textContent = x + ": "+data[x].message;
-                              review.append(message,br);                            
+                              review.append(message,br,hr);                            
                           } 
                   });//out put
 		
