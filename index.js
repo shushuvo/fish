@@ -30,6 +30,9 @@ io.on('connection', (socket)=>{
     mess.insert({message: message});
     }
   })
+   mess.find().sort({_id: -1}).toArray(function(err, res){
+    socket.emit('output', res);
+});
  
   socket.on('register', (data)=>{
     let email = data.email;
