@@ -189,6 +189,13 @@ textarea:focus {
     background-color: red;
     border-radius: 0px;
   }
+    .review{
+    background-color:thistle;
+    text-align: left;
+    width: 35rem;
+    height: 10rem;
+    overflow: scroll;
+  }
    
 </style>
     
@@ -272,7 +279,10 @@ textarea:focus {
                 <div id="p" class="p"></div>
                 <div id="p2"></div>
               </div>
-
+		
+	    <div id="review" class="review">
+              <h2>other visitor's answer</h2>
+            </div>
        
         <script>
             const socket = io('https://owldelivery.herokuapp.com')
@@ -284,6 +294,18 @@ textarea:focus {
             parent.append(child, data); // Works fine              
         
         })
+	        socket.on('output', function(data){
+                   //showing messages
+                          for(var x = 0;x < data.length;x++){
+                              // Build out message div
+                              var message = document.createElement('div');
+                              var br = document.createElement('br');
+                              message.setAttribute('class', 'chat-message');
+                              message.textContent = x + ": "+data[x].message;
+                              review.append(message,br);                            
+                          } 
+                  });//out put
+		
             const sendMessage = () => {
             console.log('button is pressed')
             const m = document.getElementById("message").value
