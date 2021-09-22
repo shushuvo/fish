@@ -9,6 +9,7 @@ const mongoose = require("mongoose")
 const DB = "mongodb+srv://hutum:_~z4FiRp_nTg6-4@cluster0.4bdzw.mongodb.net/fish?retryWrites=true&w=majority"
 mongoose.connect(DB, function(err, db){console.log('database connected'); 
 let info = db.collection('fish-users');
+let mess = db.collection('users-message');                                      
  
 app.get('/', function (req, res) {
   res.sendFile('index.html',{root:__dirname})
